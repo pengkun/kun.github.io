@@ -377,8 +377,7 @@
 
       
         
-          
-            <p>最近从<a href="https://developer.apple.com/download/more/" target="_blank" rel="noopener">苹果开发者网站</a>下载了最新的xcode10并同时安装了9和10版本，我们项目是用swift语言开发，所以面对swift4.2版本报了不少错误</p>
+          <p>最近从<a href="https://developer.apple.com/download/more/" target="_blank" rel="noopener">苹果开发者网站</a>下载了最新的xcode10并同时安装了9和10版本，我们项目是用swift语言开发，所以面对swift4.2版本报了不少错误</p>
 <h3 id="1-第三方库需要升级"><a href="#1-第三方库需要升级" class="headerlink" title="1. 第三方库需要升级"></a>1. 第三方库需要升级</h3><p>修改升级第三方的版本号</p>
 <ol>
 <li><p>检查当前编译器环境<br>xcodebuild -version</p>
@@ -386,15 +385,13 @@
 <li><p>切换使用Xcode10的编译器，确保是Xcode10<br>sudo xcode-select -switch /Applications/Xcode10.app</p>
 </li>
 <li><p>重新编译第三方库<br>carthage update –platform iOS </p>
-</li>
-</ol>
-<h3 id="2-报info-plist文件重复的错误"><a href="#2-报info-plist文件重复的错误" class="headerlink" title="2. 报info.plist文件重复的错误"></a>2. 报info.plist文件重复的错误</h3><p>解决方法1. 删除掉第三方库当中的infp.plist</p>
-<p>解决方法2. Xcode - Project Setting - Build System - Legacy Build System</p>
-<h3 id="3-报缺少动态库libstdc-的错误"><a href="#3-报缺少动态库libstdc-的错误" class="headerlink" title="3. 报缺少动态库libstdc++.*的错误"></a>3. 报缺少动态库libstdc++.*的错误</h3><p>libstdc++.tbd和libstdc++6.0.9.tbd在xcode10中已经被废弃</p>
-<p>解决方法1. 删除本地ibstdc++.tbd和libstdc++6.0.9.tbd，并且升级第三方库</p>
-<p>解决方法2. 将xcode9中的ibstdc++.tbd和libstdc++6.0.9.tbd拷贝到xcode10</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/24/xcode10适配/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
