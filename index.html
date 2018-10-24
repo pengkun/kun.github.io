@@ -181,7 +181,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">the stack of it nerds</p>
+        <p class="site-subtitle">上善若水</p>
       
   </div>
 
@@ -293,6 +293,140 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/xcode10适配/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭坤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PengKun's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/24/xcode10适配/" itemprop="url">xcode10适配</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-24T15:30:24+08:00">
+                2018-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近从<a href="https://developer.apple.com/download/more/" target="_blank" rel="noopener">苹果开发者网站</a>下载了最新的xcode10并同时安装了9和10版本，我们项目是用swift语言开发，所以面对swift4.2版本报了不少错误</p>
+<h3 id="1-第三方库需要升级"><a href="#1-第三方库需要升级" class="headerlink" title="1. 第三方库需要升级"></a>1. 第三方库需要升级</h3><p>修改升级第三方的版本号</p>
+<ol>
+<li><p>检查当前编译器环境<br>xcodebuild -version</p>
+</li>
+<li><p>切换使用Xcode10的编译器，确保是Xcode10<br>sudo xcode-select -switch /Applications/Xcode10.app</p>
+</li>
+<li><p>重新编译第三方库<br>carthage update –platform iOS </p>
+</li>
+</ol>
+<h3 id="2-报info-plist文件重复的错误"><a href="#2-报info-plist文件重复的错误" class="headerlink" title="2. 报info.plist文件重复的错误"></a>2. 报info.plist文件重复的错误</h3><p>解决方法1. 删除掉第三方库当中的infp.plist</p>
+<p>解决方法2. Xcode - Project Setting - Build System - Legacy Build System</p>
+<h3 id="3-报缺少动态库libstdc-的错误"><a href="#3-报缺少动态库libstdc-的错误" class="headerlink" title="3. 报缺少动态库libstdc++.*的错误"></a>3. 报缺少动态库libstdc++.*的错误</h3><p>libstdc++.tbd和libstdc++6.0.9.tbd在xcode10中已经被废弃</p>
+<p>解决方法1. 删除本地ibstdc++.tbd和libstdc++6.0.9.tbd，并且升级第三方库</p>
+<p>解决方法2. 将xcode9中的ibstdc++.tbd和libstdc++6.0.9.tbd拷贝到xcode10</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1465,130 +1599,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/08/hexo+github创建你自己的博客/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="彭坤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PengKun's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/08/hexo+github创建你自己的博客/" itemprop="url">hexo+github创建你自己的博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-08T18:10:18+08:00">
-                2017-07-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>工作也几年了，技术也没有进步多少，现在究其原因多多少少会有对技术的学习没有一定的记录和整理这部分原因，这也是我现在建这个博客的初衷。之前也想着建一个博客，比如说新浪博客，后来觉得界面不太美感，写了两三篇就再没写下去。现在hexo+github可以免费建博客，而且不限流量还可以添加主题，又萌生了建博客的想法。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/08/hexo+github创建你自己的博客/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1639,7 +1649,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1652,7 +1662,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
