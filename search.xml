@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[iOS12 保存生成的二维码图片到相册失败]]></title>
+    <url>%2F2018%2F11%2F06%2FUIimage-CGImage-CIImage%2F</url>
+    <content type="text"><![CDATA[手机系统最近升级到iOS 12后，原项目中，保存生成的二维码图片到系统相册失败。 1func UIImageWriteToSavedPhotosAlbum(_ image: UIImage, _ completionTarget: Any?, _ completionSelector: Selector?, _ contextInfo: UnsafeMutableRawPointer?) 以上代码只是介绍需要的参数是image，接收的参数是UIImage类型，没有说明image需要满足的条件 在虚拟机中报的错误是： Error Domain=ALAssetsLibraryErrorDomain Code=-3300 “写入失败” UserInfo={NSUnderlyingError=0x6000008d96b0 {Error Domain=ALAssetsLibraryErrorDomain Code=-3300 “写入失败” UserInfo={NSUnderlyingError=0x6000008d95f0 {Error Domain=ALAssetsLibraryErrorDomain Code=-3300 “写入失败” UserInfo={NSUnderlyingError=0x6000008d8d20 {Error Domain=PersistentURLTranslator Code=10 “(null)”}, NSLocalizedDescription=写入失败, NSLocalizedFailureReason=写入此资产时出现问题，因为写入无效。}}, NSLocalizedDescription=写入失败, NSLocalizedFailureReason=写入此资产时出现问题，因为写入无效。}}, NSLocalizedDescription=写入失败, NSLocalizedFailureReason=写入此资产时出现问题，因为写入无效。} 一头雾水，以为没有权限，再三检查了确认 在真机中没有报错，但是通过控制台打印image的data数据时，却是nil po image?.pngData() nil 应该是跟不能转成data数据有关了，通过检查发现，image的cgImage是空而ciImage有值。 生成的二维码是通过CIFilter生成 The CIFilter class produces a CIImage object as output 官方文档说明CIFilter生成CIImage对象，而CIImage只是CoreImage过滤处理或生成的图像的表示，而不是真正的图片数据，所以不能生成data，而CGImage才是图片数据，所以只需要将保存的image保证cgImage值不为空就能保存成功。 附上代码a. 生成二维码的代码 123456789101112131415161718192021222324252627282930313233343536373839// String的扩展，出现问题的情况是 中间的图标为空时 func ext_createQRImage(_ qrImageName: String = "") -&gt; UIImage? &#123; guard !self.isEmpty else &#123; return nil &#125; let stringData = self.data(using: .utf8, allowLossyConversion: false) // 创建一个二维码的滤镜 let qrFilter = CIFilter(name: "CIQRCodeGenerator") qrFilter?.setValue(stringData, forKey: "inputMessage") qrFilter?.setValue("H", forKey: "inputCorrectionLevel") let qrCIImage = qrFilter?.outputImage // 创建一个颜色滤镜,黑白色 let colorFilter = CIFilter(name: "CIFalseColor") colorFilter?.setDefaults() colorFilter?.setValue(qrCIImage, forKey: "inputImage") colorFilter?.setValue(CIColor(red: 0, green: 0, blue: 0), forKey: "inputColor0") colorFilter?.setValue(CIColor(red: 1, green: 1, blue: 1), forKey: "inputColor1") // 返回二维码image var codeImage: UIImage? if let outImage = colorFilter?.outputImage &#123; codeImage = UIImage(ciImage: outImage.transformed(by: CGAffineTransform(scaleX: 10, y: 10))) &#125; // 通常,二维码都是定制的,中间都会放想要表达意思的图片 if let iconImage = UIImage(named: qrImageName), let codeImg = codeImage &#123; let rect = CGRect(x: 0, y: 0, width: codeImg.size.width, height: codeImg.size.height) UIGraphicsBeginImageContext(rect.size) codeImg.draw(in: rect) let avatarSize = CGSize(width: rect.size.width * 0.25, height: rect.size.height * 0.25) let x = (rect.width - avatarSize.width) * 0.5 let y = (rect.height - avatarSize.height) * 0.5 iconImage.draw(in: CGRect(x: x, y: y, width: avatarSize.width, height: avatarSize.height)) let resultImage = UIGraphicsGetImageFromCurrentImageContext() UIGraphicsEndImageContext() return resultImage &#125; return codeImage &#125; b. 生成UIImage包含CGImage的代码 1234567891011extension UIImage &#123; /// 比系统的 多了步没有就用CI转换 func ext_getCGImage() -&gt; CGImage? &#123; return cgImage ?? ext_CIImageToCGImage() &#125;&#125;let qrImage = "二维码". ext_createQRImage()let cgImage = qrImage. ext_getCGImage()let saveImage = UIImage(cgImage: cgImage!)UIImageWriteToSavedPhotosAlbum(saveImage, nil, nil, nil)// 保存成功]]></content>
+      <tags>
+        <tag>iOS</tag>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[xcode10适配]]></title>
     <url>%2F2018%2F10%2F24%2Fxcode10%E9%80%82%E9%85%8D%2F</url>
     <content type="text"><![CDATA[最近从苹果开发者网站下载了最新的xcode10并同时安装了9和10版本，我们项目是用swift语言开发，所以面对swift4.2版本报了不少错误 1. 第三方库需要升级修改升级第三方的版本号 检查当前编译器环境xcodebuild -version 切换使用Xcode10的编译器，确保是Xcode10sudo xcode-select -switch /Applications/Xcode10.app 重新编译第三方库carthage update –platform iOS 2. 报info.plist文件重复的错误解决方法1. 删除掉第三方库当中的infp.plist 解决方法2. Xcode - Project Setting - Build System - Legacy Build System 3. 报缺少动态库libstdc++.*的错误libstdc++.tbd和libstdc++6.0.9.tbd在xcode10中已经被废弃 解决方法1. 删除本地ibstdc++.tbd和libstdc++6.0.9.tbd，并且升级第三方库 解决方法2. 将xcode9中的ibstdc++.tbd和libstdc++6.0.9.tbd拷贝到xcode10]]></content>
       <tags>
         <tag>iOS</tag>
-        <tag>Carthage</tag>
         <tag>Swift</tag>
+        <tag>Carthage</tag>
       </tags>
   </entry>
   <entry>

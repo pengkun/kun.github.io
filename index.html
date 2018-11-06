@@ -307,6 +307,141 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/UIimage-CGImage-CIImage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭坤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PengKun's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/06/UIimage-CGImage-CIImage/" itemprop="url">iOS12 保存生成的二维码图片到相册失败</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T14:32:34+08:00">
+                2018-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>手机系统最近升级到iOS 12后，原项目中，保存生成的二维码图片到系统相册失败。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">UIImageWriteToSavedPhotosAlbum</span><span class="params">(<span class="number">_</span> image: UIImage, <span class="number">_</span> completionTarget: Any?, <span class="number">_</span> completionSelector: Selector?, <span class="number">_</span> contextInfo: UnsafeMutableRawPointer?)</span></span></span><br></pre></td></tr></table></figure>
+<p>以上代码只是介绍需要的参数是image，接收的参数是UIImage类型，没有说明image需要满足的条件</p>
+<ul>
+<li>在虚拟机中报的错误是：</li>
+</ul>
+<blockquote>
+<p>Error Domain=ALAssetsLibraryErrorDomain Code=-3300 “写入失败” UserInfo={NSUnderlyingError=0x6000008d96b0 {Error Domain=ALAssetsLibraryErrorDomain Code=-3300 “写入失败” UserInfo={NSUnderlyingError=0x6000008d95f0 {Error Domain=ALAssetsLibraryErrorDomain Code=-3300 “写入失败” UserInfo={NSUnderlyingError=0x6000008d8d20 {Error Domain=PersistentURLTranslator Code=10 “(null)”}, NSLocalizedDescription=写入失败, NSLocalizedFailureReason=写入此资产时出现问题，因为写入无效。}}, NSLocalizedDescription=写入失败, NSLocalizedFailureReason=写入此资产时出现问题，因为写入无效。}}, NSLocalizedDescription=写入失败, NSLocalizedFailureReason=写入此资产时出现问题，因为写入无效。}</p>
+</blockquote>
+<p>一头雾水，以为没有权限，再三检查了确认</p>
+<ul>
+<li>在真机中没有报错，但是通过控制台打印image的data数据时，却是nil
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/06/UIimage-CGImage-CIImage/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/xcode10适配/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1470,132 +1605,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/BOOL - bool - Boolean - NSCFBoolean/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="彭坤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PengKun's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/10/BOOL - bool - Boolean - NSCFBoolean/" itemprop="url">BOOL / bool / Boolean / NSCFBoolean</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T18:10:18+08:00">
-                2017-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="http://nshipster.com/bool/" target="_blank" rel="noopener">原文</a></p>
-<p>Objective-C用BOOL来编码真值。它是signed char的typedef，并且用宏YES和NO来相应的表示真和假。</p>
-<p>布尔值用于条件判断，比如if和while语句，来进行有条件的逻辑或者重复运行。当判断一个条件语句，数值0为“假”，而其他任何数值为“真”。因为NULL和nil被定义为0，所以对于这些不存在的数值的条件语句也被判定为“假”。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/10/BOOL - bool - Boolean - NSCFBoolean/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1646,7 +1655,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
