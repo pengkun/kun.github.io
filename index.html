@@ -307,6 +307,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/gRPC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭坤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PengKun's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/02/gRPC/" itemprop="url">gRPC</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T11:28:42+08:00">
+                2019-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://grpc.io/docs/quickstart/objective-c/" target="_blank" rel="noopener">官方文档</a></p>
+<h3 id="Download-the-example"><a href="#Download-the-example" class="headerlink" title="Download the example"></a>Download the example</h3><p>####1. 在执行文档中的步骤时开始出现了这样的错误信息</p>
+<blockquote>
+<p>git RPC failed; curl 18 transfer closed with outstanding read data remaining</p>
+</blockquote>
+<p>   原因：git缓存设置不够需要增大缓存配置 解决办法如下</p>
+<blockquote>
+<p>git config http.postBuffer 524288000</p>
+<p>git config https.postBuffer 524288000</p>
+</blockquote>
+<p>####2. 第一步问题解决后后面执行pod install时又出现</p>
+<blockquote>
+<p>git error: RPC failed; curl 56 LibreSSL SSL_read: SSL_ERROR_SYSCALL, errno 54</p>
+</blockquote>
+<p> 查了好久网友给的解决办法好多，最后结论是mac 自带的git可能不完整配置文件缺少一些有用信息，只需要重新下载git就能解决这个问题</p>
+<blockquote>
+<p>brew install git</p>
+</blockquote>
+<p>终端开始下载关联的库 等待ing<br>运行demo  报错。。。</p>
+<p><a href="https://github.com/grpc/grpc/tree/master/examples/objective-c/helloworld" target="_blank" rel="noopener">可运行Demo</a></p>
+<h4 id="3-使用新的proto"><a href="#3-使用新的proto" class="headerlink" title="3. 使用新的proto"></a>3. 使用新的proto</h4><p>在.podspec文件中有自动将proto文件转换成对应的项目类文件</p>
+<h4 id="4-Run-the-server"><a href="#4-Run-the-server" class="headerlink" title="4. Run the server"></a>4. Run the server</h4><p>For this sample app, we need a gRPC server running on the local machine. gRPC Objective-C API supports creating gRPC clients but not gRPC servers. Therefore instead we build and run the C++ server in the same repository:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd examples/cpp/helloworld</span><br><span class="line">$ make</span><br><span class="line">$ ./greeter_server &amp;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/26/CPU-资源消耗原因和解决方案（转载/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1481,131 +1623,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/Swift与Object-C混编创建Framework，并引用cocopods（OC代码库）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="彭坤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PengKun's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/31/Swift与Object-C混编创建Framework，并引用cocopods（OC代码库）/" itemprop="url">Swift与Object-C混编创建Framework，并引用cocopods（OC代码库）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T18:10:18+08:00">
-                2017-07-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>自己在创建Framework的过程中踩了很多坑，特别是我们有一部分关键代码是 C++ 写的而且还需要引用第三方 Object-C 库就更坑了，把跳坑的方法写在这里。</p>
-<h4 id="创建Framework"><a href="#创建Framework" class="headerlink" title="创建Framework"></a>创建Framework</h4><p>-<br>Xcode-&gt;File-&gt;New-&gt;Project-&gt;Cocoa Touch Framework<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/31/Swift与Object-C混编创建Framework，并引用cocopods（OC代码库）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1656,7 +1673,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1669,7 +1686,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
